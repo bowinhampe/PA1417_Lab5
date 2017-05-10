@@ -106,7 +106,7 @@ public class TestCases {
 	public void testSpareAsLastFrame(){
 		Game game = initiateGameObject();
 		game.changeFrame(9, 2, 8);
-		game.addBonusFrame(7);
+		game.addBonusFrame(7,0);
 		int actual = game.computeGameScore();
 		int expected = 90;
 		assertEquals(expected, actual);
