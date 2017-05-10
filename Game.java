@@ -47,7 +47,13 @@ public class Game {
 		else{
 		// Check if there is more strikes
 			if(gameFrames.get(pos+1).isStrike()){
+				// Check if next frame followup is strike
+				if(pos+2 > gameFrames.size()-1){
+					frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).computeScore() + bonusFrames.get(0).getFirstTurn();
+				}
+				else{
 				frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).computeScore() + gameFrames.get(pos+2).getFirstTurn();
+				}
 			}
 			else{
 				frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).computeScore();
