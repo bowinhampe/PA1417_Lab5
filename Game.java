@@ -13,4 +13,11 @@ public class Game {
 	public int getNrOfFrames(){
 		return gameFrames.size();
 	}
+	public int computeGameScore(){
+		int gameScore = 0;
+		for(int i = 0; i < gameFrames.size();i++){
+			gameScore += gameFrames.get(i).computeScore();
+		}
+		return gameScore;
+	}
 }
