@@ -92,6 +92,16 @@ public class TestCases {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void testMultipleSpares(){
+		Game game = initiateGameObject();
+		game.changeFrame(0, 8, 2);
+		game.changeFrame(1, 5, 5);
+		int actual = game.computeGameScore();
+		int expected = 98;
+		assertEquals(expected, actual);
+	}
+	
 	
 
 }
