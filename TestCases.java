@@ -53,5 +53,14 @@ public class TestCases {
 		int expected = 81;
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testStrike(){
+		Game game = initiateGameObject();
+		game.changeFrame(0, 10, 0);
+		int actual = game.computeGameScore();
+		int expected = 94;
+		assertEquals(expected, actual);
+	}
 
 }
