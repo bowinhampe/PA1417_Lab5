@@ -16,8 +16,19 @@ public class Game {
 	public int computeGameScore(){
 		int gameScore = 0;
 		for(int i = 0; i < gameFrames.size();i++){
+			// Check if it is a strike
+			if(gameFrames.get(i).getFirstTurn()==10){
+				gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).computeScore(); 
+			}
+			else{
 			gameScore += gameFrames.get(i).computeScore();
+			}
 		}
 		return gameScore;
+	}
+	public void changeFrame(int pos, int firstValue, int secondValue){
+		gameFrames.remove(pos);
+		Frame newFrame = new Frame(firstValue, secondValue);
+		gameFrames.add(pos, newFrame);
 	}
 }
