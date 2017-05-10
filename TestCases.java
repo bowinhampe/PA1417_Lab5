@@ -62,5 +62,14 @@ public class TestCases {
 		int expected = 94;
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testSpare(){
+		Game game = initiateGameObject();
+		game.changeFrame(0, 1, 9);
+		int actual = game.computeGameScore();
+		int expected = 88;
+		assertEquals(expected, actual);
+	}
 
 }
