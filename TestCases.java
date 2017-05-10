@@ -3,7 +3,20 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TestCases {
-
+	private Game initiateGameObject(){
+		Game game = new Game();
+		game.addFrame(1,5);
+		game.addFrame(3,6);
+		game.addFrame(7,2);
+		game.addFrame(3,6);
+		game.addFrame(4,4);
+		game.addFrame(5,3);
+		game.addFrame(3,3);
+		game.addFrame(4,5);
+		game.addFrame(8,1);
+		game.addFrame(2,6);
+		return game;
+	}
 	@Test
 	public void testFrame() {
 		Frame frame = new Frame(1,2);
@@ -27,19 +40,17 @@ public class TestCases {
 	
 	@Test
 	public void testGame() {
-		Game game = new Game();
-		game.addFrame(1,5);
-		game.addFrame(3,6);
-		game.addFrame(7,2);
-		game.addFrame(3,6);
-		game.addFrame(4,4);
-		game.addFrame(5,3);
-		game.addFrame(3,3);
-		game.addFrame(4,5);
-		game.addFrame(8,1);
-		game.addFrame(2,6);
+		Game game = initiateGameObject();
 		int actual = game.getNrOfFrames();
 		int expected = 10;
+		assertEquals(expected, actual);
+	}
+	
+	@Test
+	public void testGameScore() {
+		Game game = initiateGameObject();
+		int actual = game.computeGameScore();
+		int expected = 81;
 		assertEquals(expected, actual);
 	}
 
