@@ -25,29 +25,12 @@ public class Game {
 			// Check if it is a strike
 			if(gameFrames.get(i).isStrike()){
 				// Check if the strike is the last frame
-				if(i == gameFrames.size()-1){
-					gameScore += gameFrames.get(i).computeScore() + bonusFrames.get(0).computeScore();
-				}
-				else{
-				// Check if there is more strikes
-					if(gameFrames.get(i+1).isStrike()){
-						gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).computeScore() + gameFrames.get(i+2).getFirstTurn();
-					}
-					else{
-						gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).computeScore();
-					}
-				}
+				gameScore += computeStrike(i);
 			}
 			
 			// Check if it is a spare
 			else if(gameFrames.get(i).computeScore()==10){
-				// Check if it is the last frame
-				if(i==gameFrames.size()-1){
-					gameScore += gameFrames.get(i).computeScore() + bonusFrames.get(0).getFirstTurn();
-				}
-				else{
-				gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).getFirstTurn();
-				}
+				gameScore += computeSpare(i);
 			}
 			
 			else{
@@ -55,6 +38,34 @@ public class Game {
 			}
 		}
 		return gameScore;
+	}
+	private int computeStrike(int pos){
+		int frameScore = 0;
+		if(pos == gameFrames.size()-1){
+			frameScore += gameFrames.get(pos).computeScore() + bonusFrames.get(0).computeScore();
+		}
+		else{
+		// Check if there is more strikes
+			if(gameFrames.get(pos+1).isStrike()){
+				frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).computeScore() + gameFrames.get(pos+2).getFirstTurn();
+			}
+			else{
+				frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).computeScore();
+			}
+		}
+		return frameScore;
+	}
+	
+	private int computeSpare(int pos){
+		int frameScore = 0;
+		// Check if it is the last frame
+		if(pos==gameFrames.size()-1){
+			frameScore += gameFrames.get(pos).computeScore() + bonusFrames.get(0).getFirstTurn();
+		}
+		else{
+		frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).getFirstTurn();
+		}
+		return frameScore;
 	}
 	public void changeFrame(int pos, int firstValue, int secondValue){
 		gameFrames.remove(pos);
