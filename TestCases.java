@@ -15,5 +15,14 @@ public class TestCases {
 		expected = 2;
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testFrameScore() {
+		Frame frame = new Frame(1,2);
+		
+		int expectedValue = 3;
+		assertEquals(expectedValue, frame.computeScore());
+
+	}
 
 }
