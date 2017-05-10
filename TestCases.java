@@ -151,6 +151,27 @@ public class TestCases {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void testRealGame(){
+		Game game = new Game();
+		game.addFrame(6, 3);
+		game.addFrame(7, 1);
+		game.addFrame(8, 2);
+		game.addFrame(7, 2);
+		game.addFrame(10, 0);
+		game.addFrame(6, 2);
+		game.addFrame(7, 3);
+		game.addFrame(10, 0);
+		game.addFrame(8, 0);
+		game.addFrame(7, 3);
+		game.addBonusFrame(10, 0);
+		int actual = game.computeGameScore();
+		int expected = 135;
+		assertEquals(expected, actual);
+	}
+	
+	
+	
 	
 	
 
