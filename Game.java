@@ -2,19 +2,18 @@ import java.util.ArrayList;
 
 public class Game {
 	private ArrayList<Frame> gameFrames;
-	private ArrayList<Frame> bonusFrames;
+	private Frame bonusFrame;
 	
 	public Game(){
 		gameFrames = new ArrayList<>();
-		bonusFrames = new ArrayList<>();
+		bonusFrame = null;
 	}
 	public void addFrame(int firstValue, int secondValue){
 		Frame frame = new Frame(firstValue, secondValue);
 		gameFrames.add(frame);
 	}
 	public void addBonusFrame(int firstBonusValue, int secondBonusValue){
-		Frame frame = new Frame(firstBonusValue, secondBonusValue);
-		bonusFrames.add(frame);
+		 bonusFrame = new Frame(firstBonusValue, secondBonusValue);
 	}
 	public int getNrOfFrames(){
 		return gameFrames.size();
@@ -41,15 +40,16 @@ public class Game {
 	}
 	private int computeStrike(int pos){
 		int frameScore = 0;
+		// Check if last frame is available
 		if(pos == gameFrames.size()-1){
-			frameScore += gameFrames.get(pos).computeScore() + bonusFrames.get(0).computeScore();
+			frameScore += gameFrames.get(pos).computeScore() + bonusFrame.computeScore();
 		}
 		else{
 		// Check if there is more strikes
 			if(gameFrames.get(pos+1).isStrike()){
-				// Check if next frame followup is strike
+				// Check if next frames followup is strike
 				if(pos+2 > gameFrames.size()-1){
-					frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).computeScore() + bonusFrames.get(0).getFirstTurn();
+					frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).computeScore() + bonusFrame.getFirstTurn();
 				}
 				else{
 				frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).computeScore() + gameFrames.get(pos+2).getFirstTurn();
@@ -66,7 +66,7 @@ public class Game {
 		int frameScore = 0;
 		// Check if it is the last frame
 		if(pos==gameFrames.size()-1){
-			frameScore += gameFrames.get(pos).computeScore() + bonusFrames.get(0).getFirstTurn();
+			frameScore += gameFrames.get(pos).computeScore() + bonusFrame.getFirstTurn();
 		}
 		else{
 		frameScore += gameFrames.get(pos).computeScore() + gameFrames.get(pos+1).getFirstTurn();
