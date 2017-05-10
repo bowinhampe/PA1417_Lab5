@@ -18,14 +18,19 @@ public class Game {
 		for(int i = 0; i < gameFrames.size();i++){
 			// Check if it is a strike
 			if(gameFrames.get(i).getFirstTurn()==10){
-				gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).computeScore(); 
+				if(gameFrames.get(i+1).getFirstTurn()==10){
+					gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).computeScore() + gameFrames.get(i+2).getFirstTurn();
+				}
+				else{
+					gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).computeScore();
+				}
 			}
 			// Check if it is a spare
 			else if(gameFrames.get(i).computeScore()==10){
 				gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).getFirstTurn();
 			}
 			else{
-			gameScore += gameFrames.get(i).computeScore();
+				gameScore += gameFrames.get(i).computeScore();
 			}
 		}
 		return gameScore;
