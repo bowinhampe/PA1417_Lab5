@@ -71,5 +71,17 @@ public class TestCases {
 		int expected = 88;
 		assertEquals(expected, actual);
 	}
+	
+	@Test
+	public void testStrikeAndSpare(){
+		Game game = initiateGameObject();
+		game.changeFrame(0, 10, 0);
+		game.changeFrame(1, 9, 1);
+		int actual = game.computeGameScore();
+		int expected = 103;
+		assertEquals(expected, actual);
+	}
+	
+	
 
 }
