@@ -14,4 +14,7 @@ public class Frame {
 	public int getSecondTurn(){
 		return secondTurn;
 	}
+	public int computeScore(){
+		return firstTurn+secondTurn;
+	}
 }
