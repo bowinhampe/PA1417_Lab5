@@ -17,4 +17,10 @@ public class Frame {
 	public int computeScore(){
 		return firstTurn+secondTurn;
 	}
+	public boolean isStrike(){
+		if(firstTurn == 10){
+			return true;
+		}
+		return false;
+	}
 }
