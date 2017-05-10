@@ -132,6 +132,25 @@ public class TestCases {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void testBestScore(){
+		Game game = new Game();
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addFrame(10, 0);
+		game.addBonusFrame(10, 10);
+		int actual = game.computeGameScore();
+		int expected = 300;
+		assertEquals(expected, actual);
+	}
+	
 	
 	
 
