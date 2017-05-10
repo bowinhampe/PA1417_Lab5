@@ -82,6 +82,16 @@ public class TestCases {
 		assertEquals(expected, actual);
 	}
 	
+	@Test
+	public void testMultipleStrikes(){
+		Game game = initiateGameObject();
+		game.changeFrame(0, 10, 0);
+		game.changeFrame(1, 10, 0);
+		int actual = game.computeGameScore();
+		int expected = 112;
+		assertEquals(expected, actual);
+	}
+	
 	
 
 }
