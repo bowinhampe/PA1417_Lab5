@@ -20,6 +20,10 @@ public class Game {
 			if(gameFrames.get(i).getFirstTurn()==10){
 				gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).computeScore(); 
 			}
+			// Check if it is a spare
+			else if(gameFrames.get(i).computeScore()==10){
+				gameScore += gameFrames.get(i).computeScore() + gameFrames.get(i+1).getFirstTurn();
+			}
 			else{
 			gameScore += gameFrames.get(i).computeScore();
 			}
